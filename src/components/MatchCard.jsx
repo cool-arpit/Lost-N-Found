@@ -1,0 +1,3 @@
+import React from 'react';
+import { matchLabel } from '../utils/matching';
+export default function MatchCard({match,onOpen}){const {a,b,score}=match;const other=a.id===match.a.id?b:a;return <button className="match-card" onClick={()=>onOpen(other)}><div className="match-score"><strong>{score}%</strong><span>{matchLabel(score)}</span></div><div className="match-body"><div className="match-title"><span>{a.type==='lost'?'You lost':'You found'}</span><b>↔</b><span>{other.type==='lost'?'Lost report':'Found report'}</span></div><h3>{other.title}</h3><p>⌖ {other.location} · ◈ {other.category}</p><div className="reason-row">{match.reasons?.slice(0,3).map(r=><span key={r}>✓ {r}</span>)}</div></div><span className="arrow">→</span></button>}
